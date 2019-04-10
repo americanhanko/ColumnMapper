@@ -16,7 +16,7 @@ function Get-POGLHash ($csv)
   $data = Get-CsvObjects ($csv)
   $data | ForEach-Object {
     $poid = $_.$poOrderHeader
-    if (-Not ($hash.ContainsKey($poid))) {
+    if (-not ($hash.ContainsKey($poid))) {
       $hash[$poid] = @()
     }
   }
