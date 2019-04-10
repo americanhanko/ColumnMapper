@@ -1,4 +1,4 @@
-﻿# $poOrderHeader = "[PO] Order Id"
+﻿$poOrderHeader = "[PO] Order Id"
 
 function Build-POGL ($csv)
 {
