@@ -24,6 +24,8 @@ function Get-POGLHash ($csv)
     else {
       $hash[$poid] += $glid
     }
+    $ary = $hash[$poid] | Select-Object -Unique
+    $hash[$poid] = @($ary)
   }
   $hash
 }

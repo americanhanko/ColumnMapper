@@ -17,6 +17,6 @@ Describe 'Get-POGLHash' {
 Describe 'Get-POGLHash' {
   It 'creates a hash with keys and values as GL ids' {
     $data = Get-POGLHash './tests/raw_test.csv'
-    $data['8100000630'] | Should -Be @('653000', '653000', '610040', '610040', '653000', '610040', '610040')
+    $data['8100000630'] | Should -Be @('653000', '610040')
   }
 }
