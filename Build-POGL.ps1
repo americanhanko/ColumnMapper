@@ -17,12 +17,13 @@ function Get-POGLHash ($csv)
   $data = Get-CsvObjects $csv
   $data | ForEach-Object {
     $poid = $_.$poOrderHeader
+    $glid = $_.$poGLAccountHeader
     if (-not ($hash.ContainsKey($poid))) {
-      $hash[$poid] = @()
+      $hash[$poid] = @($glid)
     }
-    # else {
-    #   $hash[$poid].Add($_.$poGLAccountHeader)
-    # }
+    else {
+      $hash[$poid] += $glid
+    }
   }
   $hash
 }
