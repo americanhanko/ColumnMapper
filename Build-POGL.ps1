@@ -1,4 +1,5 @@
 ﻿$poOrderHeader = "[PO] Order Id"
+$poGLAccountHeader = "[PO]GL Account (GL Account Id)"
 
 function Build-POGL ($csv)
 {
@@ -13,12 +14,15 @@ function Get-CsvObjects ($csv)
 function Get-POGLHash ($csv)
 {
   $hash = @{}
-  $data = Get-CsvObjects ($csv)
+  $data = Get-CsvObjects $csv
   $data | ForEach-Object {
     $poid = $_.$poOrderHeader
     if (-not ($hash.ContainsKey($poid))) {
       $hash[$poid] = @()
     }
+    # else {
+    #   $hash[$poid].Add($_.$poGLAccountHeader)
+    # }
   }
   $hash
 }

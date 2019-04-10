@@ -9,6 +9,14 @@ Describe 'Get-CsvObjects' {
 
 Describe 'Get-POGLHash' {
   It 'creates a hash even with duplicate keys' {
-    Get-POGLHash './tests/raw_test.csv'
+    $data = Get-POGLHash './tests/raw_test.csv'
+    $data.ContainsKey('8100000630') | Should -Be True
+  }
+}
+
+Describe 'Get-POGLHash' {
+  It 'creates a hash with keys and values as GL ids' {
+    $data = Get-POGLHash './tests/raw_test.csv'
+    $data['8100000630'] | Should -Be ''
   }
 }
