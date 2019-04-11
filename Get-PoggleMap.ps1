@@ -10,7 +10,7 @@ else {
   $content = Read-Host -Prompt 'Drag the CSV with raw data into the window'
 }
 
-$rawData = Import-Csv -Path $content
+$rawData = Import-Csv -Path "$content"
 
 function Get-PoggleMap
 {
@@ -40,5 +40,6 @@ function Export-PoggleMap
 
 if ((Resolve-Path -Path $MyInvocation.InvocationName).ProviderPath -eq $MyInvocation.MyCommand.Path) {
   Export-PoggleMap
-  Write-Host "Poggle file is located at: $(Resolve-Path $outputCsvFile)" 
+  Write-Host "Poggle file is located at: $(Resolve-Path $outputCsvFile)"
+  Start "" $(Resolve-Path $outputCsvFile)
 }
