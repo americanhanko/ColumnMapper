@@ -1,7 +1,7 @@
 ﻿$purchaseOrderHeader = "[PO] Order Id"
 $generalLedgerHeader = "[PO]GL Account (GL Account Id)"
-$date = Get-Date -UFormat "%Y.%m.%d"
-$outputCsvFile = "POGL_$date.csv"
+$date = Get-Date -UFormat "%Y%m%d"
+$outputCsvFile = "Poggle_$date.csv"
 $rawData = Import-Csv -Path $args[0]
 
 function Get-PoggleMap
