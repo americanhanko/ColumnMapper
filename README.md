@@ -1,4 +1,10 @@
-# REI Poggle Map
+# Poggle Map
+
+Quickly map Purchase Order (PO) numbers to General Ledger IDs (GL)
+
+PO + GL = _"Poggle"_
+
+## Instructions
 
 1. Open PowerShell
 2. Drag `Get-PoggleMap.ps1` into the window
