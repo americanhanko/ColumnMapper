@@ -4,7 +4,7 @@ $date = Get-Date -UFormat "%Y.%m.%d"
 $outputCsvFile = "POGL_$date.csv"
 $rawData = Import-Csv -Path $args[0]
 
-function Get-POGLHash
+function Get-PoggleMap
 {
   $hash = @{}
   $rawData | ForEach-Object {
@@ -22,20 +22,14 @@ function Get-POGLHash
   $hash
 }
 
-function Export-POGLHash
+function Export-PoggleMap
 {
-  $dataHash = Get-POGLHash
+  $dataHash = Get-PoggleMap
   $dataHash.GetEnumerator() | Select-Object -Property @{ N = $purchaseOrderHeader; E = { $_.Key } },
   @{ N = $generalLedgerHeader; E = { $_.Value } } | Export-Csv -NoTypeInformation $outputCsvFile
-}
-
-function Build-FunctioningCsv {
   (Get-Content $outputCsvFile) -replace "(\d)\s(\d)",'$1","$2' | Set-Content $outputCsvFile
 }
 
-$name = $MyInvocation.InvocationName
-
-if ((Resolve-Path -Path $name).ProviderPath -eq $MyInvocation.MyCommand.Path) {
-  Export-POGLHash
-  Build-FunctioningCsv
+if ((Resolve-Path -Path $MyInvocation.InvocationName).ProviderPath -eq $MyInvocation.MyCommand.Path) {
+  Export-PoggleMap
 }
