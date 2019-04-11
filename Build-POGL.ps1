@@ -1,22 +1,13 @@
 ﻿$purchaseOrderHeader = "[PO] Order Id"
 $generalLedgerHeader = "[PO]GL Account (GL Account Id)"
-$outputCsvFile = 'export.csv'
+$date = Get-Date -UFormat "%Y.%m.%d"
+$outputCsvFile = "POGL_$date.csv"
+$rawData = Import-Csv -Path $args[0]
 
-function Build-POGL ($csv)
-{
-  Get-CsvObjects ($csv)
-}
-
-function Get-CsvObjects ($csv)
-{
-  Import-Csv ($csv)
-}
-
-function Get-POGLHash ($csv)
+function Get-POGLHash
 {
   $hash = @{}
-  $data = Get-CsvObjects $csv
-  $data | ForEach-Object {
+  $rawData | ForEach-Object {
     $poid = $_.$purchaseOrderHeader
     $glid = $_.$generalLedgerHeader
     if (-not ($hash.ContainsKey($poid))) {
@@ -31,9 +22,20 @@ function Get-POGLHash ($csv)
   $hash
 }
 
-function Export-POGLHash ($csv)
+function Export-POGLHash
 {
-  $data = Get-POGLHash ($csv)
-  $data.GetEnumerator() | Select-Object -Property @{ N = $purchaseOrderHeader; E = { $_.Key } },
+  $dataHash = Get-POGLHash
+  $dataHash.GetEnumerator() | Select-Object -Property @{ N = $purchaseOrderHeader; E = { $_.Key } },
   @{ N = $generalLedgerHeader; E = { $_.Value } } | Export-Csv -NoTypeInformation $outputCsvFile
+}
+
+function Build-FunctioningCsv {
+  (Get-Content $outputCsvFile) -replace "(\d)\s(\d)",'$1","$2' | Set-Content $outputCsvFile
+}
+
+$name = $MyInvocation.InvocationName
+
+if ((Resolve-Path -Path $name).ProviderPath -eq $MyInvocation.MyCommand.Path) {
+  Export-POGLHash
+  Build-FunctioningCsv
 }
