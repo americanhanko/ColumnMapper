@@ -1,1 +1,2 @@
-POGL*.csv
+*.csv
+!test.csv
