@@ -2,7 +2,15 @@
 $generalLedgerHeader = "[PO]GL Account (GL Account Id)"
 $date = Get-Date -UFormat "%Y%m%d"
 $outputCsvFile = "Poggle_$date.csv"
-$rawData = Import-Csv -Path $args[0]
+
+if ($args.length -eq 1) {
+  $content = $args[0]
+}
+else {
+  $content = Read-Host -Prompt 'Drag the CSV with raw data into the window'
+}
+
+$rawData = Import-Csv -Path $content
 
 function Get-PoggleMap
 {
@@ -32,4 +40,5 @@ function Export-PoggleMap
 
 if ((Resolve-Path -Path $MyInvocation.InvocationName).ProviderPath -eq $MyInvocation.MyCommand.Path) {
   Export-PoggleMap
+  Write-Host "Poggle file is located at: $(Resolve-Path $outputCsvFile)" 
 }
