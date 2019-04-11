@@ -41,5 +41,5 @@ function Export-PoggleMap
 if ((Resolve-Path -Path $MyInvocation.InvocationName).ProviderPath -eq $MyInvocation.MyCommand.Path) {
   Export-PoggleMap
   Write-Host "Poggle file is located at: $(Resolve-Path $outputCsvFile)"
-  Start "" $(Resolve-Path $outputCsvFile)
+  Start "$(Resolve-Path $outputCsvFile)"
 }
