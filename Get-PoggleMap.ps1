@@ -1,6 +1,7 @@
 ﻿$outputCsvFile = "Poggle_$(Get-Date -UFormat "%Y%m%d").csv"
+$purchaseOrderHeader = "[PO] Order Id"
+$generalLedgerHeader = "[PO]GL Account (GL Account Id)"
 $arguments = $args
-
 
 if ($args.length -eq 1) {
   $content = $arguments[0]
@@ -14,8 +15,6 @@ $rawData = Import-Csv -Path "$content"
 function ConvertTo-PoggleMap
 {
   $hash = @{}
-  $purchaseOrderHeader = "[PO] Order Id"
-  $generalLedgerHeader = "[PO]GL Account (GL Account Id)"
   $rawData | ForEach-Object {
     $poid = $_.$purchaseOrderHeader
     $glid = $_.$generalLedgerHeader
