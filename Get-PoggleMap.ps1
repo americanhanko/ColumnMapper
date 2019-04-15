@@ -1,10 +1,9 @@
-﻿$purchaseOrderHeader = "[PO] Order Id"
-$generalLedgerHeader = "[PO]GL Account (GL Account Id)"
-$date = Get-Date -UFormat "%Y%m%d"
-$outputCsvFile = "Poggle_$date.csv"
+﻿$outputCsvFile = "Poggle_$(Get-Date -UFormat "%Y%m%d").csv"
+$arguments = $args
+
 
 if ($args.length -eq 1) {
-  $content = $args[0]
+  $content = $arguments[0]
 }
 else {
   $content = Read-Host -Prompt 'Drag the CSV with raw data into the window'
@@ -12,17 +11,19 @@ else {
 
 $rawData = Import-Csv -Path "$content"
 
-function Get-PoggleMap
+function ConvertTo-PoggleMap
 {
   $hash = @{}
+  $purchaseOrderHeader = "[PO] Order Id"
+  $generalLedgerHeader = "[PO]GL Account (GL Account Id)"
   $rawData | ForEach-Object {
     $poid = $_.$purchaseOrderHeader
     $glid = $_.$generalLedgerHeader
-    if (-not ($hash.ContainsKey($poid))) {
-      $hash[$poid] = @($glid)
+    if ($hash.ContainsKey($poid)) {
+      $hash[$poid] += $glid
     }
     else {
-      $hash[$poid] += $glid
+      $hash[$poid] = @($glid)
     }
     $ary = $hash[$poid] | Select-Object -Unique
     $hash[$poid] = @($ary)
@@ -32,14 +33,20 @@ function Get-PoggleMap
 
 function Export-PoggleMap
 {
-  $dataHash = Get-PoggleMap
+  $dataHash = ConvertTo-PoggleMap
   $dataHash.GetEnumerator() | Select-Object -Property @{ N = $purchaseOrderHeader; E = { $_.Key } },
   @{ N = $generalLedgerHeader; E = { $_.Value } } | Export-Csv -NoTypeInformation $outputCsvFile
   (Get-Content $outputCsvFile) -replace "(\d)\s(\d)",'$1","$2' | Set-Content $outputCsvFile
 }
 
-if ((Resolve-Path -Path $MyInvocation.InvocationName).ProviderPath -eq $MyInvocation.MyCommand.Path) {
+$invocationName = $MyInvocation.InvocationName
+$myCommand = $MyInvocation.MyCommand.Path
+
+$invocationName = if ($invocationName -eq $null) { '' } else { $invocationName }
+$invocationPath = if ($invocationName -ne '') { Resolve-Path -Path $invocationName } else { '' }
+
+if ($invocationPath.ProviderPath -eq $myCommand) {
   Export-PoggleMap
-  Write-Host "Poggle file is located at: $(Resolve-Path $outputCsvFile)"
+  Write-Output "Poggle file is located at: $(Resolve-Path $outputCsvFile)"
   Start "$(Resolve-Path $outputCsvFile)"
 }
