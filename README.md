@@ -4,7 +4,7 @@ Consolidate duplicate row values and create new columns from values in another.
 
 ## Getting Started
 
-In PowerShell, run the following commands:
+Open PowerShell as Administrator, run the following commands:
 
 1. `Install-Module -Name InstallModuleFromGitHub -Force`
 1. `Install-ModuleFromGitHub -GitHubRepo americanhanko/ColumnMapper`
