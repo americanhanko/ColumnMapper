@@ -1,9 +1,7 @@
-$here = (Split-Path -Parent $MyInvocation.MyCommand.Path)
-. "$here/../Invoke-PoggleMapper.ps1" "$here/test.csv"
+Import-Module -Name ./"Invoke-PoggleMapper.psm1"
+$poggleMap = Invoke-PoggleMapper -Path "tests/test.csv"
 
-Describe 'ConvertTo-PoggleMap' {
-  $poggleMap = ConvertTo-PoggleMap
-
+Describe 'Invoke-PoggleMapper' {
   It 'handles duplicate keys' {
     $poggleMap.ContainsKey('9780679735779') | Should -Be True
   }
