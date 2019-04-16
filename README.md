@@ -4,14 +4,42 @@ Consolidate duplicate row values and create new columns from values in another.
 
 ## Getting Started
 
-Open PowerShell as Administrator, run the following commands:
+Open PowerShell as Administrator and run the following commands:
 
 1. `Install-Module -Name InstallModuleFromGitHub -Force`
 1. `Install-ModuleFromGitHub -GitHubRepo americanhanko/ColumnMapper`
 
 ## Usage
 
-1. `Invoke-ColumnMapper -Path C:\path\to\data.csv`
+**Simple usage**:
+
+```powershell
+Import-Module Invoke-ColumnMapper
+Invoke-ColumnMapper -Path C:\path\to\data.csv
+```
+
+**Full syntax**:
+
+```powershell
+Invoke-ColumnMapper [[-InputPath] <Object>] [[-KeysHeader] <Object>] [[-OutputPath] <Object>] [[-ValuesHeader] <Object>] [-NoExport] [-Open] [<CommonParameters>]
+```
+
+### Parameters
+
+    -InputPath <Object>
+        The absolute or relative path to the input CSV file.
+
+    -KeysHeader <Object>
+        Specifies the column name to search in for the row identifiers. ColumnMapper will use these values as the primary row identifiers. Currently defaults to '[PO] Order Id' for legacy purposes.
+
+    -OutputPath <Object>
+        Specifies the path to write the output CSV file to. Defaults to ColumnMap_YYYYMMDD.csv
+
+    -ValuesHeader <Object>
+        Specifies the column name to search for unique values mapped to the row identifiers. ColumnMapper will take any value found in the first column and create new columns for each unique value found in this one. Currently defaults to '[PO]GL Account (GL Account Id)' for legacy purposes.
+
+    -Open [<SwitchParameter>]
+        Opens the output CSV file. Defaults to false.
 
 ## Getting Help
 
@@ -40,13 +68,14 @@ Pass the file to `Invoke-ColumnMapper` and specify the **Names** and **FavoriteS
 The invocation in PowerShell would look like this:
 
 ```powershell
+PS C:\Users\americanhanko> Import-Module Invoke-ColumnMapper
 PS C:\Users\americanhanko> Invoke-ColumnMapper -Path .\People.csv -KeysHeader Names -ValuesHeader FavoriteSport
 Output file is here: C:\Users\americanhanko\ColumnMap_20190416.csv
 ```
 
 ## Detailed Explanation
 
-`ColumnMapper` finds all unique values in the column specified by the `KeysHeader` parameter and converts them to hash keys. When it finds a new key,
+`Invoke-ColumnMapper` finds all unique values in the column specified by the `KeysHeader` parameter and converts them to hash keys. When it finds a new key,
 it asks for any values found in the column specified by the `ValuesHeader` parameter and adds them to a new array. It continues to add any new values
 found in the `ValuesHeader` column to each corresponding array. Finally, we split the array into a comma-separated string so that it can be imported
 easily into your favorite spreadsheet application.
