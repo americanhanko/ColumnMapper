@@ -1,5 +1,5 @@
 Import-Module -Name ./"Invoke-PoggleMapper.psm1"
-$poggleMap = Invoke-PoggleMapper -Path "tests/test.csv"
+$poggleMap = Invoke-PoggleMapper -InputPath "tests/test.csv"
 
 Describe 'Invoke-PoggleMapper' {
   It 'handles duplicate keys' {
