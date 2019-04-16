@@ -30,7 +30,7 @@ Let's say you have the file **People.csv**:
 | Alice | Volleyball    |
 | Alice | Volleyball    |
 
-If pass the file to `Invoke-ColumnMapper` and you specify the **Names** and **FavoriteSport** columns, you'll get a new CSV file that looks like this:
+Pass the file to `Invoke-ColumnMapper` and specify the **Names** and **FavoriteSport** columns, and you'll get a new CSV file that looks like this:
 
 | Names | FavoriteSport |          |            |
 |-------|---------------|----------|------------|
