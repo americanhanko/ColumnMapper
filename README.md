@@ -40,7 +40,8 @@ Pass the file to `Invoke-ColumnMapper` and specify the **Names** and **FavoriteS
 The invocation in PowerShell would look like this:
 
 ```powershell
-Invoke-ColumnMapper -Path C:\Users\americanhanko\People.csv -KeysHeader Names -ValuesHeader FavoriteSport
+PS C:\Users\americanhanko> Invoke-ColumnMapper -Path .\People.csv -KeysHeader Names -ValuesHeader FavoriteSport
+Output file is here: C:\Users\americanhanko\ColumnMap_20190416.csv
 ```
 
 ## Detailed Explanation

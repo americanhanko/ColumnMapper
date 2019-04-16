@@ -1,5 +1,5 @@
 Import-Module -Name ./"Invoke-ColumnMapper.psm1"
-$map = Invoke-ColumnMapper -InputPath "tests/test.csv"
+$map = Invoke-ColumnMapper -InputPath "tests/test.csv" -NoExport
 
 Describe 'Invoke-ColumnMapper' {
   It 'handles duplicate keys' {
