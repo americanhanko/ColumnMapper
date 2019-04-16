@@ -9,9 +9,9 @@
    .PARAMETER OutputPath
        Specifies the path to write the output CSV file to. Only valid if the -Open parameter is used. Defaults to ColumnMap_YYYYMMDD.csv
    .PARAMETER KeysHeader
-       Specifies the column name to search in for the row identifiers. ColumnMapper will use these values as the primary row identifiers.
+       Specifies the column name to search in for the row identifiers. ColumnMapper will use these values as the primary row identifiers. Currently defaults to '[PO] Order Id' for legacy purposes.
    .PARAMETER ValuesHeader
-       Specifies the column name to search for unique values mapped to the row identifiers. ColumnMapper will take any value found in the first column and create new columns for each unique value found in this one. #>
+       Specifies the column name to search for unique values mapped to the row identifiers. ColumnMapper will take any value found in the first column and create new columns for each unique value found in this one. Currently defaults to '[PO]GL Account (GL Account Id)' for legacy purposes. #> 
 
   param(
     $InputPath,
