@@ -5,8 +5,4 @@
   Author = 'Eric Hanko'
   Copyright = 'Copyright (c) 2019 Eric Hanko. All rights reserved.'
   Description = 'Consolidate duplicate row values and create new columns from values in another.'
-  FunctionsToExport = '*'
-  CmdletsToExport = '*'
-  VariablesToExport = '*'
-  AliasesToExport = '*'
 }
