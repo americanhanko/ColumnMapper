@@ -1,21 +1,21 @@
-# Poggle Mapper
+# ColumnMapper
 
-Find all unique values in one column and dynamically create new columns for all unique values found in another.
+Consolidate duplicate row values and dynamically create new columns from corresponding values in another column from a CSV file.
 
 ## Getting Started
 
 In PowerShell, run the following commands:
 
 1. `Install-Module -Name InstallModuleFromGitHub -Force`
-1. `Install-ModuleFromGitHub -GitHubRepo americanhanko/PoggleMapper`
+1. `Install-ModuleFromGitHub -GitHubRepo americanhanko/ColumnMapper`
 
 ## Usage
 
-1. `Invoke-PoggleMapper -Path C:\path\to\data.csv`
+1. `Invoke-ColumnMapper -Path C:\path\to\data.csv`
 
 ## Getting Help
 
-1. `Get-Help Invoke-PoggleMapper`
+1. `Get-Help Invoke-ColumnMapper`
 
 ## Example
 
@@ -30,7 +30,7 @@ Let's say you have a file called `People.csv`:
 | Alice | Volleyball    |
 | Alice | Volleyball    |
 
-If pass the file to `Invoke-PoggleMapper` and you specify the `Names` and `FavoriteSport` columns, you'll get:
+If pass the file to `Invoke-ColumnMapper` and you specify the `Names` and `FavoriteSport` columns, you'll get a new CSV file that looks like this:
 
 | Names | FavoriteSport |          |            |
 |-------|---------------|----------|------------|

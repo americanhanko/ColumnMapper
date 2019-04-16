@@ -1,22 +1,22 @@
-﻿function Invoke-PoggleMapper {
+﻿function Invoke-ColumnMapper {
 <#
    .SYNOPSIS
-       Map Purchase Order numbers to General Ledger IDs.
+       Consolidate duplicate row values and dynamically create new columns from corresponding values in another column.
    .PARAMETER InputPath
-       Specifies the path to the input CSV file that contains duplicate PO and GL IDs.
+       The absolute or relative path to the input CSV file.
    .PARAMETER Open
        Opens the output CSV file. Defaults to false.
    .PARAMETER OutputPath
-       Specifies the path to write the output CSV file to. Only valid if the -Open parameter is used. Defaults to PoggleMap_YYYYMMDD.csv
+       Specifies the path to write the output CSV file to. Only valid if the -Open parameter is used. Defaults to ColumnMap_YYYYMMDD.csv
    .PARAMETER KeysHeader
-       Specifies the column name to search in for the row identifiers. PoggleMapper will use these values as the primary row identifiers.
+       Specifies the column name to search in for the row identifiers. ColumnMapper will use these values as the primary row identifiers.
    .PARAMETER ValuesHeader
-       Specifies the column name to search for unique values mapped to the row identifiers. PoggleMapper will take any value found in the first column and create new columns for each unique value found in this one. #>
+       Specifies the column name to search for unique values mapped to the row identifiers. ColumnMapper will take any value found in the first column and create new columns for each unique value found in this one. #>
 
   param(
     $InputPath,
     $KeysHeader = '[PO] Order Id',
-    $OutputPath = "PoggleMap_$(Get-Date -UFormat "%Y%m%d").csv",
+    $OutputPath = "ColumnMap_$(Get-Date -UFormat "%Y%m%d").csv",
     $ValuesHeader = '[PO]GL Account (GL Account Id)',
     [switch]$Open = $false
   )
@@ -46,4 +46,4 @@
   }
 }
 
-Export-ModuleMember -Function Invoke-PoggleMapper
+Export-ModuleMember -Function Invoke-ColumnMapper

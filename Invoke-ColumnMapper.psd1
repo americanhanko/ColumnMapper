@@ -4,7 +4,7 @@ $moduleSettings  = @{
   Author = 'Eric Hanko'
   Copyright = 'Copyright (c) 2019 Eric Hanko. All rights reserved.'
   Description = 'Consolidate duplicate row values and dynamically create new columns from corresponding values in another column.'
-  FunctionsToExport = @(Invoke-PoggleMapper)
+  FunctionsToExport = @(Invoke-ColumnMapper)
 }
 
 New-ModuleManifest @moduleSettings
