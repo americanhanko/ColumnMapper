@@ -2,14 +2,12 @@
 <#
    .SYNOPSIS
        Map Purchase Order numbers to General Ledger IDs.
-   .DESCRIPTION
-       The Invoke-PoggleMapper cmdlet
    .PARAMETER Path
        Specifies the path to the input CSV file that contains duplicate PO and GL IDs.
    .PARAMETER OutputPath
-       Specifies the path to write the output CSV file to.
+       Specifies the path to write the output CSV file to. Only valid if the -Open parameter is used.
    .PARAMETER Open
-       Opens the output CSV file.
+       Opens the output CSV file. Defaults to false.
    .PARAMETER PurchaseOrderHeader
        Specifies the header of the Purchase Order ID column. Defaults to "[PO] Order Id"
    .PARAMETER GeneralLedgerHeader
