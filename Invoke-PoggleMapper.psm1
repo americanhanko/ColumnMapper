@@ -1,10 +1,26 @@
 ﻿function Invoke-PoggleMapper {
+<#
+   .SYNOPSIS
+       Map Purchase Order numbers to General Ledger IDs.
+   .DESCRIPTION
+       The Invoke-PoggleMapper cmdlet
+   .PARAMETER Path
+       Specifies the path to the input CSV file that contains duplicate PO and GL IDs.
+   .PARAMETER OutputPath
+       Specifies the path to write the output CSV file to.
+   .PARAMETER Open
+       Opens the output CSV file.
+   .PARAMETER PurchaseOrderHeader
+       Specifies the header of the Purchase Order ID column. Defaults to "[PO] Order Id"
+   .PARAMETER GeneralLedgerHeader
+       Specifies the header of the General Ledger ID column. Defaults to "[PO]GL Account (GL Account Id)" #>
+
   param(
-    $GeneralLedgerHeader ='[PO]GL Account (GL Account Id)' ,
-    $Open = $false,
+    $GeneralLedgerHeader = '[PO]GL Account (GL Account Id)',
     $OutputPath = "PoggleMap_$(Get-Date -UFormat "%Y%m%d").csv",
     $Path,
-    $PurchaseOrderHeader = '[PO] Order Id'
+    $PurchaseOrderHeader = '[PO] Order Id',
+    [switch]$Open = $false
   )
 
   $dataHash = @{}

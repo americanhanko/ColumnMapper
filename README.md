@@ -2,14 +2,11 @@
 
 Map Purchase Order numbers to General Ledger IDs.
 
-## Windows
+## Getting Started
 
-1. `git clone git@github.com:americanhanko/poggle-map.git`
-1. `cd poggle-map`
-1. `Invoke-PoggleMapper.ps1`
+1. `Install-Module -Name InstallModuleFromGitHub -Force`
+1. `Install-ModuleFromGitHub -GitHubRepo americanhanko/PoggleMapper`
 
-## Unix
+## Usage
 
-1. `git clone git@github.com:americanhanko/poggle-map.git`
-1. `cd poggle-map`
-1. `pwsh Invoke-PoggleMapper.ps1`
+`PS> Invoke-PoggleMapper -Path C:\path\to\data.csv`
