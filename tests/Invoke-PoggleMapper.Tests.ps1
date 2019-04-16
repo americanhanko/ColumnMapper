@@ -1,7 +1,7 @@
 $here = (Split-Path -Parent $MyInvocation.MyCommand.Path)
-. "$here/../Get-PoggleMap.ps1" "$here/test.csv"
+. "$here/../Invoke-PoggleMapper.ps1" "$here/test.csv"
 
-Describe 'Get-PoggleMap' {
+Describe 'ConvertTo-PoggleMap' {
   $poggleMap = ConvertTo-PoggleMap
 
   It 'handles duplicate keys' {
