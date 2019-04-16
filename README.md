@@ -41,9 +41,14 @@ Invoke-ColumnMapper [[-InputPath] <Object>] [[-KeysHeader] <Object>] [[-OutputPa
     -Open [<SwitchParameter>]
         Opens the output CSV file. Defaults to false.
 
-## Getting Help
+### Help
 
-1. `Get-Help Invoke-ColumnMapper`
+As with most modules, you can use the `Get-Help` cmdlet. To see help for `Invoke-ColumnMapper`, run:
+
+
+```powershell
+Get-Help Invoke-ColumnMapper
+```
 
 ## Example
 
