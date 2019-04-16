@@ -11,14 +11,14 @@ Open PowerShell as Administrator and run the following commands:
 
 ## Usage
 
-### Simple usage
+### Basic
 
 ```powershell
 Import-Module Invoke-ColumnMapper
 Invoke-ColumnMapper -Path C:\path\to\data.csv
 ```
 
-### Full syntax
+### Full Syntax
 
 ```powershell
 Invoke-ColumnMapper [[-InputPath] <Object>] [[-KeysHeader] <Object>] [[-OutputPath] <Object>] [[-ValuesHeader] <Object>] [-NoExport] [-Open] [<CommonParameters>]
@@ -41,10 +41,9 @@ Invoke-ColumnMapper [[-InputPath] <Object>] [[-KeysHeader] <Object>] [[-OutputPa
     -Open [<SwitchParameter>]
         Opens the output CSV file. Defaults to false.
 
-### Help
+### Getting Help
 
 As with most modules, you can use the `Get-Help` cmdlet. To see help for `Invoke-ColumnMapper`, run:
-
 
 ```powershell
 Get-Help Invoke-ColumnMapper
