@@ -1,7 +1,12 @@
 ﻿function Invoke-ColumnMapper {
 <#
    .SYNOPSIS
-       Consolidate duplicate row values and dynamically create new columns from corresponding values in another column.
+       Consolidate duplicate row values and create new columns from values in another.
+    .DESCRIPTION
+       ColumnMapper finds all unique values in the column specified by the KeysHeader parameter and converts them to hash keys. When it finds a new key,
+       it asks for any values found in the column specified by the ValuesHeader parameter and adds them to a new array. It continues to add any new values
+       found in the ValuesHeader column to each corresponding array. Finally, we split the array into a comma-separated string so that it can be imported
+       easily into your favorite spreadsheet application.
    .PARAMETER InputPath
        The absolute or relative path to the input CSV file.
    .PARAMETER Open
