@@ -30,16 +30,23 @@ Invoke-ColumnMapper [[-InputPath] <Object>] [[-KeysHeader] <Object>] [[-OutputPa
         The absolute or relative path to the input CSV file.
 
     -KeysHeader <Object>
-        Specifies the column name to search in for the row identifiers. ColumnMapper will use these values as the primary row identifiers. Currently defaults to '[PO] Order Id' for legacy purposes.
-
-    -OutputPath <Object>
-        Specifies the path to write the output CSV file to. Defaults to ColumnMap_YYYYMMDD.csv
+        Specifies the column name to search in for the row identifiers.
+        ColumnMapper will use these values as the primary row identifiers.
+        Defaults to '[PO] Order Id' for legacy purposes.
 
     -ValuesHeader <Object>
-        Specifies the column name to search for unique values mapped to the row identifiers. ColumnMapper will take any value found in the first column and create new columns for each unique value found in this one. Currently defaults to '[PO]GL Account (GL Account Id)' for legacy purposes.
+        Specifies the column name to search for unique values mapped to the row identifiers.
+        ColumnMapper will take any value found in the first column and create new columns
+        for each unique value found in this one. Defaults to '[PO]GL Account (GL Account Id)'
+        for legacy purposes.
+
+    -OutputPath <Object>
+        Specifies the path to write the output CSV file to.
+        Defaults to ColumnMap_YYYYMMDD.csv
 
     -Open [<SwitchParameter>]
-        Opens the output CSV file. Defaults to false.
+        Opens the output CSV file.
+        Defaults to false.
 
 ### Getting Help
 
