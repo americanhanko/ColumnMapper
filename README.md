@@ -13,7 +13,7 @@ Open PowerShell as Administrator and run the following commands:
 
 ### Basic
 
-```powershell
+```
 Import-Module Invoke-ColumnMapper
 Invoke-ColumnMapper -InputPath C:\path\to\data.csv
 ```
