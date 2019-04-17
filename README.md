@@ -4,12 +4,15 @@ Consolidate duplicate row values and create new columns for each unique value fo
 
 ## Getting Started
 
-Open PowerShell as Administrator and run the following commands:
+Open PowerShell and run the following command to install the `ColumnMapper` module:
 
-1. `Install-Module -Name InstallModuleFromGitHub -Force`
-1. `Install-ModuleFromGitHub -GitHubRepo americanhanko/ColumnMapper`
+```powershell
+Install-Module -Name ColumnMapper
+```
 
 ## Usage
+
+The `ColumnMapper` module exposes a single function: `Invoke-ColumnMapper`
 
 ### Basic
 
@@ -50,7 +53,7 @@ Invoke-ColumnMapper [[-InputPath] <Object>] [[-KeysHeader] <Object>] [[-OutputPa
 
 ### Getting Help
 
-As with most modules, you can use the `Get-Help` cmdlet. To see help for `Invoke-ColumnMapper`, run:
+As with most functions and cmdlets, you can use the `Get-Help` cmdlet. To see help for `Invoke-ColumnMapper`, run:
 
 ```powershell
 Get-Help Invoke-ColumnMapper

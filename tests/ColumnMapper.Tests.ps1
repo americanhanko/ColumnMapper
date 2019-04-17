@@ -1,4 +1,4 @@
-Import-Module -Name ./"Invoke-ColumnMapper.psm1"
+Import-Module -Name "./ColumnMapper.psm1"
 $map = Invoke-ColumnMapper -InputPath "tests/test.csv" -NoExport
 
 Describe 'Invoke-ColumnMapper' {
