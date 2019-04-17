@@ -1,6 +1,6 @@
 # ColumnMapper
 
-Consolidate duplicate row values and create new columns from values in another.
+Consolidate duplicate row values and create new columns for each unique value found in a corresponding column.
 
 ## Getting Started
 

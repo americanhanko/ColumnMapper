@@ -1,7 +1,7 @@
 ﻿function Invoke-ColumnMapper {
 <#
    .SYNOPSIS
-       Consolidate duplicate row values and create new columns from values in another.
+       Consolidate duplicate row values and create new columns for each unique value found in a corresponding column.
     .DESCRIPTION
        ColumnMapper finds all unique values in the column specified by the KeysHeader parameter and converts them to hash keys. When it finds a new key,
        it asks for any values found in the column specified by the ValuesHeader parameter and adds them to a new array. It continues to add any new values
