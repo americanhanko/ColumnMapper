@@ -15,7 +15,7 @@ Open PowerShell as Administrator and run the following commands:
 
 ```powershell
 Import-Module Invoke-ColumnMapper
-Invoke-ColumnMapper -Path C:\path\to\data.csv
+Invoke-ColumnMapper -InputPath C:\path\to\data.csv
 ```
 
 ### Full Syntax
