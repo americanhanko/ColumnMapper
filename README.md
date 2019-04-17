@@ -4,21 +4,28 @@ Consolidate duplicate row values and create new columns for each unique value fo
 
 ## Getting Started
 
-Open PowerShell and run the following command to install the `ColumnMapper` module:
+The `ColumnMapper` module exports a single function `Invoke-ColumnMapper` and an alias to it `cmap`. It requires one parameter `InputPath` which may be an absolute or relative path to the input CSV file containing the data you wish to map.
+
+To install the `ColumnMapper` module, open PowerShell and run the following command:
 
 ```powershell
-Install-Module -Name ColumnMapper
+Install-Module -Name ColumnMapper -Scope CurrentUser
 ```
 
 ## Usage
 
-The `ColumnMapper` module exposes a single function: `Invoke-ColumnMapper`
-
 ### Basic
 
+Using the function:
+
 ```
-Import-Module Invoke-ColumnMapper
 Invoke-ColumnMapper -InputPath C:\path\to\data.csv
+```
+
+or using the alias:
+
+```
+cmap -InputPath C:\path\to\data.csv
 ```
 
 ### Full Syntax
