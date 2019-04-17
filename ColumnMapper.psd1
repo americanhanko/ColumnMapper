@@ -6,4 +6,5 @@
   GUID = 'a6bac1c8-e74e-4136-86c0-9d092a32a8ce'
   ModuleVersion = '0.6.0'
   FunctionsToExport = 'Invoke-ColumnMapper'
+  AliasesToExport = 'cmap'
 }

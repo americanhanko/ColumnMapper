@@ -63,4 +63,5 @@
   }
 }
 
+New-Alias -Name cmap -Value Invoke-ColumnMapper
 Export-ModuleMember -Function Invoke-ColumnMapper
