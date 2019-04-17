@@ -19,10 +19,11 @@
        Specifies the column name to search for unique values mapped to the row identifiers. ColumnMapper will take any value found in the first column and create new columns for each unique value found in this one. Currently defaults to '[PO]GL Account (GL Account Id)' for legacy purposes. #>
 
   param(
+    [Parameter(Mandatory=$true)]
     $InputPath,
-    $KeysHeader = '[PO] Order Id',
-    $OutputPath = "ColumnMap_$(Get-Date -UFormat "%Y%m%d").csv",
-    $ValuesHeader = '[PO]GL Account (GL Account Id)',
+    [string]$KeysHeader = '[PO] Order Id',
+    [string]$OutputPath = "ColumnMap_$(Get-Date -UFormat "%Y%m%d").csv",
+    [string]$ValuesHeader = '[PO]GL Account (GL Account Id)',
     [switch]$NoExport = $false,
     [switch]$Open = $false
   )
@@ -63,5 +64,5 @@
   }
 }
 
-New-Alias -Name cmap -Value Invoke-ColumnMapper
-Export-ModuleMember -Function Invoke-ColumnMapper
+Set-Alias -Name cmap -Value Invoke-ColumnMapper
+Export-ModuleMember -Function * -Alias *
